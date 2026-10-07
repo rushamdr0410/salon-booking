@@ -1,0 +1,13 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+db.sqlite3
+
+# Node
+node_modules/
+dist/
+
+# Secrets and editor files
+.env
+.vscode/
