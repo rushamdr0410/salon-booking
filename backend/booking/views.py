@@ -73,8 +73,8 @@ def appointment_list(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(["PUT", "DELETE"])
-def appointment_status(t, pk):
+@api_view(["PATCH"])
+def appointment_status(request, pk):
     appointment = get_object_or_404(Appointment, pk=pk)
 
     serializer = StatusUpdateSerializer(data=request.data)
@@ -92,6 +92,7 @@ def appointment_status(t, pk):
     appointment.status = new_status
     appointment.save()
     return Response(AppointmentSerializer(appointment).data)
+
 
 @api_view(["DELETE"])
 def appointment_details(request, pk):
